@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:drift_front_end/add_address_widget.dart';
+import 'package:drift_front_end/ui/drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,15 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const DriftHome(title: 'Drift Test Application'),
@@ -32,188 +25,138 @@ class MyApp extends StatelessWidget {
 class DriftHome extends StatefulWidget {
   const DriftHome({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
   State<DriftHome> createState() => _DriftHome();
 }
 
-void process() {}
+void process() {
+  print("Submit was pressed");
+}
 
 class _DriftHome extends State<DriftHome> {
+  var src_widget2 = Container(
+    child: Expanded(
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Src Address',
+              hintText: 'Enter Address',
+            ),
+            autofocus: false,
+          ),
+          Container(
+              child: const TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Src City',
+              hintText: 'Enter City',
+            ),
+            autofocus: false,
+          )),
+          Container(
+              child: const TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Src State',
+              hintText: 'Enter State',
+            ),
+            autofocus: false,
+          )),
+          Container(
+              child: const TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Src Zip',
+              hintText: 'Enter Zip',
+            ),
+            autofocus: false,
+          )),
+        ],
+      ),
+    ),
+  );
+  var dst_widget2 = Container(
+    child: Expanded(
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Dst Address',
+              hintText: 'Enter Address',
+            ),
+            autofocus: false,
+          ),
+          Container(
+              child: const TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Dst City',
+              hintText: 'Enter City',
+            ),
+            autofocus: false,
+          )),
+          Container(
+              child: const TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Dst State',
+              hintText: 'Enter State',
+            ),
+            autofocus: false,
+          )),
+          Container(
+              child: const TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Dst Zip',
+              hintText: 'Enter Zip',
+            ),
+            autofocus: false,
+          )),
+        ],
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      drawer: appDrawer(),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text("Insert your Source and Destination Addresses",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ],
-              ),
-              Container(
-                height: 50,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Spacer(),
-                    Text("Source"),
-                    Spacer(),
-                    Text("Destination"),
-                    Spacer(),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Src Address',
-                          hintText: 'Enter Address',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Dst Address',
-                          hintText: 'Enter Address',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Src City',
-                          hintText: 'Enter City',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Dst City',
-                          hintText: 'Enter City',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Src State',
-                          hintText: 'Enter State',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Dst State',
-                          hintText: 'Enter State',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Src Zip',
-                          hintText: 'Enter Zip',
-                        ),
-                        autofocus: false,
-                      )),
-                  Spacer(),
-                  Container(
-                      width: 300,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Dst Zip',
-                          hintText: 'Enter Zip',
-                        ),
-                        autofocus: false,
-                      )),
-                  const Spacer(),
-                ],
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                      width: 100,
-                      height: 40,
-                      child: ElevatedButton(
-                        onPressed: process,
-                        child: Text("Submit"),
-                      )),
-                ],
-              ),
-            ],
-          ),
+        child: Column(
+          children: [
+            Center(
+              child: Text("Insert your Source and Destination Addresses",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(children: [
+              Spacer(),
+              src_widget2,
+              dst_widget2,
+              Spacer(),
+            ]),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+                width: 100,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: process,
+                  child: Text("Submit"),
+                )),
+          ],
         ),
       ),
     );
